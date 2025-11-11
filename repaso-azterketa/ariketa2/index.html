@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Notas de Ikasleak</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; margin-bottom: 20px; }
+        td, th { border: 1px solid #333; padding: 5px 10px; text-align: center; }
+        input { width: 60px; }
+        .resultado { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Ingresar notas de 3 ikasle y 4 irakasgai</h1>
+
+    <table id="tablaNotas">
+        <thead>
+            <tr>
+                <th>Ikasle / Irakasgaia</th>
+                <th>Irakasgaia 1</th>
+                <th>Irakasgaia 2</th>
+                <th>Irakasgaia 3</th>
+                <th>Irakasgaia 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Ikasle 1</th>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+            </tr>
+            <tr>
+                <th>Ikasle 2</th>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+            </tr>
+            <tr>
+                <th>Ikasle 3</th>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+                <td><input type="number" min="0" max="10"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="procesarNotas()">Calcular resultados</button>
+
+    <div class="resultado" id="resultado"></div>
+    <script>scr="script.js"</script>
+</html>
