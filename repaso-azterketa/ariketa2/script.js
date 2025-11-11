@@ -1,5 +1,6 @@
-        function procesarNotas() {
-            let tabla = document.getElementById("tablaNotas");
+
+function procesarNotas() {
+        let tabla = document.getElementById("tablaNotas");
             let notak = [];
 
             for (let i = 1; i <= 3; i++) {
