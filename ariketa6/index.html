@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prueba JS</title>
+</head>
+<body>
+  <script>
+    function Ikaslea(izena, adina, espezialitatea, ikaskidea = null) {
+    this._izena = izena;
+    this._adina = adina;
+    this._espezialitatea = espezialitatea; 
+    this._ikaskidea = ikaskidea; 
+}
+
+Ikaslea.prototype.getIzena = function() {
+    return this._izena;
+};
+
+Ikaslea.prototype.getAdina = function() {
+    return this._adina;
+};
+
+Ikaslea.prototype.getEspezialitatea = function() {
+    switch (this._espezialitatea) {
+        case 1: return "Sistemak";
+        case 2: return "Web";
+        case 3: return "Anitzeko plataforma";
+        default: return "Ezagutzen ez den espezialitatea";
+    }
+};
+
+Ikaslea.prototype.getIkaskideIzena = function() {
+    return this._ikaskidea ? this._ikaskidea.getIzena() : "Ez du ikaskiderik";
+};
+
+Ikaslea.prototype.getIkaskidea = function() {
+    return this._ikaskidea;
+};
+
+Ikaslea.prototype.setIzena = function(izena) {
+    this._izena = izena;
+};
+
+Ikaslea.prototype.setAdina = function(adina) {
+    this._adina = adina;
+};
+
+Ikaslea.prototype.setEspezialitatea = function(espezialitatea) {
+    this._espezialitatea = espezialitatea;
+};
+
+Ikaslea.prototype.setEspezialitateIzena = function(kate) {
+    switch (kate) {
+        case "Sistemak": this._espezialitatea = 1; break;
+        case "Web": this._espezialitatea = 2; break;
+        case "Anitzeko plataforma": this._espezialitatea = 3; break;
+        default: console.log("Espezialitate okerra");
+    }
+};
+
+Ikaslea.prototype.setIkaskidea = function(ikasleObj) {
+    this._ikaskidea = ikasleObj;
+};
+
+Ikaslea.prototype.erakutsi = function() {
+    return `Izena: ${this.getIzena()}, Adina: ${this.getAdina()}, Espezialitatea: ${this.getEspezialitatea()}, Ikaskidea: ${this.getIkaskideIzena()}`;
+};
+
+let ikaslea1 = new Ikaslea("Jon", 21, 1);
+let ikaslea2 = new Ikaslea("Maria", 22, 2, ikaslea1);
+
+console.log(ikaslea2.erakutsi()); 
+
+ikaslea1.setIzena("Jon Ander");
+console.log(ikaslea2.erakutsi());
+
+    
+    console.log(ikaslea2.erakutsi());
+  </script>
+</body>
+</html>

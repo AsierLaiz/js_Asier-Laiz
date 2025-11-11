@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Erloju Kronometroduna</title>
+
+</head>
+<body>
+
+<h2>Erloju Kronometroduna</h2>
+
+<div id="reloj"></div>
+
+<div id="cronometro">00:00:00</div>
+
+<button id="iniciar">Iniciar</button>
+<button id="detener">Detener</button>
+<button id="reiniciar">Reiniciar</button>
+<button id="guardar">Guardar valor</button>
+
+<div id="valoresGuardados"></div>
+
+<script>
+    function actualizarReloj() {
+        const ahora = new Date();
+        const horas = String(ahora.getHours()).padStart(2,'0');
+        const minutos = String(ahora.getMinutes()).padStart(2,'0');
+        const segundos = String(ahora.getSeconds()).padStart(2,'0');
+        document.getElementById("reloj").innerText = `${horas}:${minutos}:${segundos}`;
+    }
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj(); 
+
+    let horas = 0, minutos = 0, segundos = 0;
+    let cronometroInterval = null;
+
+    function actualizarCronometro() {
+        segundos++;
+        if (segundos === 60) { segundos = 0; minutos++; }
+        if (minutos === 60) { minutos = 0; horas++; }
+
+        const h = String(horas).padStart(2,'0');
+        const m = String(minutos).padStart(2,'0');
+        const s = String(segundos).padStart(2,'0');
+
+        document.getElementById("cronometro").innerText = `${h}:${m}:${s}`;
+    }
+
+    document.getElementById("iniciar").addEventListener("click", () => {
+        if (!cronometroInterval) {
+            cronometroInterval = setInterval(actualizarCronometro, 1000);
+        }
+    });
+
+    document.getElementById("detener").addEventListener("click", () => {
+        clearInterval(cronometroInterval);
+        cronometroInterval = null;
+    });
+
+    document.getElementById("reiniciar").addEventListener("click", () => {
+        clearInterval(cronometroInterval);
+        cronometroInterval = null;
+        horas = minutos = segundos = 0;
+        document.getElementById("cronometro").innerText = "00:00:00";
+    });
+
+    document.getElementById("guardar").addEventListener("click", () => {
+        const valor = document.getElementById("cronometro").innerText;
+        const div = document.getElementById("valoresGuardados");
+        const p = document.createElement("p");
+        p.innerText = valor;
+        div.appendChild(p);
+    });
+</script>
+
+</body>
+</html>
