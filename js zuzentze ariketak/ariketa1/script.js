@@ -14,9 +14,8 @@ function addContact(e) {
     return;
   }
   contacts.push({name: name, phone: phone});
-  const li = document.createElement('li');
-  li.innerText = `${name} - ${phone}`;
-  list.append(li); 
+  renderContacts();
+
   form.reset();
   message.classList.remove('hidden');
   setTimeout(hideMessage, 2000);
@@ -24,6 +23,29 @@ function addContact(e) {
 function hideMessage() {
   message.classList.add('hidden');
 }
+
+function renderContacts() {
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
+  
+  list.innerHTML = '';
+
+  contacts.forEach((contact, index) => {
+    const li = document.createElement('li');
+    li.innerText = `${contact.name} - ${contact.phone} `;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerText = 'Eliminar';
+    deleteBtn.style.marginLeft = '10px';
+    deleteBtn.addEventListener('click', () => {
+      contacts.splice(index, 1); 
+      renderContacts(); 
+    });
+
+    li.appendChild(deleteBtn);
+    list.appendChild(li);
+  });
+}
+
 
 
 

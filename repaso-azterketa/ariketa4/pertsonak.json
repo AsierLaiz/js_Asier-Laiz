@@ -1,0 +1,274 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Voyislav",
+        "last": "Galchenko"
+      },
+      "location": {
+        "street": {
+          "number": 4342,
+          "name": "Stepana Duki"
+        },
+        "city": "Veliki Mosti",
+        "state": "Avtonomna Respublika Krim",
+        "country": "Ukraine",
+        "postcode": 16365,
+        "coordinates": {
+          "latitude": "80.9333",
+          "longitude": "-116.3886"
+        },
+        "timezone": {
+          "offset": "-7:00",
+          "description": "Mountain Time (US & Canada)"
+        }
+      },
+      "nat": "UA"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Ms",
+        "first": "Manisha",
+        "last": "Shet"
+      },
+      "location": {
+        "street": {
+          "number": 7371,
+          "name": "Sao Tome Old Quarter"
+        },
+        "city": "Raipur",
+        "state": "Kerala",
+        "country": "India",
+        "postcode": 33019,
+        "coordinates": {
+          "latitude": "-6.4897",
+          "longitude": "65.7511"
+        },
+        "timezone": {
+          "offset": "+11:00",
+          "description": "Magadan, Solomon Islands, New Caledonia"
+        }
+      },
+      "nat": "IN"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Christian",
+        "last": "Snyder"
+      },
+      "location": {
+        "street": {
+          "number": 5616,
+          "name": "Avondale Ave"
+        },
+        "city": "Devonport",
+        "state": "Australian Capital Territory",
+        "country": "Australia",
+        "postcode": 1889,
+        "coordinates": {
+          "latitude": "35.3125",
+          "longitude": "144.0968"
+        },
+        "timezone": {
+          "offset": "+3:30",
+          "description": "Tehran"
+        }
+      },
+      "nat": "AU"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Miss",
+        "first": "Emmi",
+        "last": "Øvland"
+      },
+      "location": {
+        "street": {
+          "number": 6909,
+          "name": "Bjørnstjerne Bjørnsons plass"
+        },
+        "city": "Holmestrand",
+        "state": "Hedmark",
+        "country": "Denmark",
+        "postcode": "6896",
+        "coordinates": {
+          "latitude": "-83.4231",
+          "longitude": "-169.8741"
+        },
+        "timezone": {
+          "offset": "+11:00",
+          "description": "Magadan, Solomon Islands, New Caledonia"
+        }
+      },
+      "nat": "NO"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Owen",
+        "last": "Philippe"
+      },
+      "location": {
+        "street": {
+          "number": 7661,
+          "name": "Rue Louis-Garrand"
+        },
+        "city": "Bordeaux",
+        "state": "Mayenne",
+        "country": "France",
+        "postcode": 46845,
+        "coordinates": {
+          "latitude": "5.0887",
+          "longitude": "-174.5930"
+        },
+        "timezone": {
+          "offset": "+9:30",
+          "description": "Adelaide, Darwin"
+        }
+      },
+      "nat": "FR"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Warren",
+        "last": "Scott"
+      },
+      "location": {
+        "street": {
+          "number": 6656,
+          "name": "Oak Ridge Ln"
+        },
+        "city": "Warragul",
+        "state": "New South Wales",
+        "country": "Australia",
+        "postcode": 8080,
+        "coordinates": {
+          "latitude": "58.5958",
+          "longitude": "152.1849"
+        },
+        "timezone": {
+          "offset": "+2:00",
+          "description": "Kaliningrad, South Africa"
+        }
+      },
+      "nat": "AU"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Darren",
+        "last": "Murphy"
+      },
+      "location": {
+        "street": {
+          "number": 9535,
+          "name": "Stevens Creek Blvd"
+        },
+        "city": "Amarillo",
+        "state": "Massachusetts",
+        "country": "United States",
+        "postcode": 98691,
+        "coordinates": {
+          "latitude": "75.8202",
+          "longitude": "95.8177"
+        },
+        "timezone": {
+          "offset": "0:00",
+          "description": "Western Europe Time, London, Lisbon, Casablanca"
+        }
+      },
+      "nat": "US"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Samantha",
+        "last": "Vasquez"
+      },
+      "location": {
+        "street": {
+          "number": 9572,
+          "name": "Bridge Road"
+        },
+        "city": "Coventry",
+        "state": "Northamptonshire",
+        "country": "United Kingdom",
+        "postcode": "QY0 6XN",
+        "coordinates": {
+          "latitude": "-87.9467",
+          "longitude": "165.3799"
+        },
+        "timezone": {
+          "offset": "-12:00",
+          "description": "Eniwetok, Kwajalein"
+        }
+      },
+      "nat": "GB"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Alfred",
+        "last": "Warren"
+      },
+      "location": {
+        "street": {
+          "number": 3333,
+          "name": "Rochestown Road"
+        },
+        "city": "Oranmore",
+        "state": "Sligo",
+        "country": "Australia",
+        "postcode": 92949,
+        "coordinates": {
+          "latitude": "-51.8242",
+          "longitude": "7.9393"
+        },
+        "timezone": {
+          "offset": "-8:00",
+          "description": "Pacific Time (US & Canada)"
+        }
+      },
+      "nat": "IE"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Emily",
+        "last": "Poulsen"
+      },
+      "location": {
+        "street": {
+          "number": 7664,
+          "name": "Kløvermarksvej"
+        },
+        "city": "Oure",
+        "state": "Hovedstaden",
+        "country": "Denmark",
+        "postcode": 75433,
+        "coordinates": {
+          "latitude": "87.3833",
+          "longitude": "100.2850"
+        },
+        "timezone": {
+          "offset": "0:00",
+          "description": "Western Europe Time, London, Lisbon, Casablanca"
+        }
+      },
+      "nat": "DK"
+    }
+  ]
+}

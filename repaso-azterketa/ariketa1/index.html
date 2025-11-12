@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prueba formulario</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .fondo-erro { background-color: #f8d7da; }
+    .dialogo {
+      position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      background: #fff; border: 1px solid #ccc; padding: 20px; z-index: 50;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    #mezua { display: none; }
+    .botones { margin-top: 12px; }
+    label { display:block; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h1>Ekitaldiko partaide erregistroa (prueba)</h1>
+
+  <!-- novalidate evita validación nativa -->
+  <form id="erregistroa" novalidate>
+    <label for="izena">Izena*:</label>
+    <input type="text" id="izena" name="izena" placeholder="Sartu zure izena">
+
+    <label for="abizena1">Lehen abizena*:</label>
+    <input type="text" id="abizena1" name="abizena1" placeholder="Sartu lehen abizena">
+
+    <label for="abizena2">Bigarren abizena:</label>
+    <input type="text" id="abizena2" name="abizena2" placeholder="Sartu bigarren abizena">
+
+    <label for="jaioteguna">Jaioteguna* (DD/MM/YYYY):</label>
+    <input type="text" id="jaioteguna" name="jaioteguna" placeholder="Adib.: 25/03/2001">
+
+    <label for="telefonoa">Telefonoa (9 digitu):</label>
+    <input type="text" id="telefonoa" name="telefonoa" placeholder="Adib.: 612345678" maxlength="9">
+
+    <label for="email">Emaila*:</label>
+    <input type="text" id="email" name="email" placeholder="Adib.: zureposta@adib.eus">
+
+    <div class="botones">
+      <input type="submit" value="Bidali" id="bidali">
+      <input type="reset" value="Garbitu">
+    </div>
+  </form>
+
+  <div id="mezua" class="dialogo" role="dialog" aria-modal="true">
+    <p id="mezuaTestua"></p>
+    <div style="margin-top:12px">
+      <button id="okBotoia">OK</button>
+      <button id="zuzenduBotoia">Zuzendu</button>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const formulario = document.getElementById("erregistroa");
+    const mezua = document.getElementById("mezua");
+    const mezuaTestua = document.getElementById("mezuaTestua");
+    const okBotoia = document.getElementById("okBotoia");
+    const zuzendubtn = document.getElementById("zuzenduBotoia");
+
+    const izena = document.getElementById("izena");
+    const abizena1 = document.getElementById("abizena1");
+    const abizena2 = document.getElementById("abizena2");
+    const jaioteguna = document.getElementById("jaioteguna");
+    const telefonoa = document.getElementById("telefonoa");
+    const email = document.getElementById("email");
+
+    const soloLetras = /^[A-Za-zÀ-ÿ\s]+$/;
+    const formatoFecha = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const telefonoValido = /^\d{9}$/;
+
+    const marcar = (el, err) => {
+      if (err) el.classList.add("fondo-erro");
+      else el.classList.remove("fondo-erro");
+    };
+
+    telefonoa.addEventListener("blur", () => {
+      if (telefonoa.value.trim() !== "" && !telefonoValido.test(telefonoa.value.trim())) marcar(telefonoa, true)
+      else marcar(telefonoa, false);
+    });
+
+    email.addEventListener("blur", () => {
+      if (email.value.trim() === "" || !emailValido.test(email.value.trim())) marcar(email, true)
+      else marcar(email, false);
+    });
+
+    function validarTodo() {
+      const errores = [];
+
+      if (izena.value.trim() === "" || !soloLetras.test(izena.value.trim())) {
+        marcar(izena, true);
+        errores.push("Izena");
+      } else marcar(izena, false);
+
+      if (abizena1.value.trim() === "" || !soloLetras.test(abizena1.value.trim())) {
+        marcar(abizena1, true);
+        errores.push("Lehen abizena");
+      } else marcar(abizena1, false);
+
+      if (abizena2.value.trim() !== "" && !soloLetras.test(abizena2.value.trim())) {
+        marcar(abizena2, true);
+        errores.push("Bigarren abizena");
+      } else marcar(abizena2, false);
+
+      const jVal = jaioteguna.value.trim();
+      if (!formatoFecha.test(jVal)) {
+        marcar(jaioteguna, true);
+        errores.push("Jaioteguna (formatua DD/MM/YYYY)");
+      } else {
+        const [d, m, y] = jVal.split("/").map(Number);
+        const fecha = new Date(y, m - 1, d);
+        const hoy = new Date();
+        hoy.setHours(0,0,0,0);
+        if (isNaN(fecha.getTime()) || fecha >= hoy) {
+          marcar(jaioteguna, true);
+          errores.push("Jaioteguna (egun bat aurretik izan behar da)");
+        } else {
+          marcar(jaioteguna, false);
+        }
+      }
+
+      if (telefonoa.value.trim() !== "" && !telefonoValido.test(telefonoa.value.trim())) {
+        marcar(telefonoa, true);
+        errores.push("Telefonoa (9 digituko zenbakia)");
+      } else if (telefonoa.value.trim() === "") marcar(telefonoa, false);
+
+      if (email.value.trim() === "" || !emailValido.test(email.value.trim())) {
+        marcar(email, true);
+        errores.push("Emaila");
+      } else marcar(email, false);
+
+      return errores;
+    }
+
+    formulario.addEventListener("submit", (ev) => {
+      ev.preventDefault(); 
+      const errores = validarTodo();
+
+      if (errores.length === 0) {
+        mezuaTestua.textContent = "Formularioa behar bezala bete da.";
+        okBotoia.style.display = "inline-block";
+        zuzendubtn.style.display = "none";
+      } else {
+        mezuaTestua.innerHTML = "Akatsak aurkitu dira eremu hauetan:<br> - " + errores.join("<br> - ");
+        okBotoia.style.display = "none";
+        zuzendubtn.style.display = "inline-block";
+      }
+
+      mezua.style.display = "block";
+      okBotoia.focus();
+    });
+
+    okBotoia.addEventListener("click", () => {
+      formulario.reset();
+      [izena, abizena1, abizena2, jaioteguna, telefonoa, email].forEach(el => marcar(el, false));
+      mezua.style.display = "none";
+    });
+
+    zuzendubtn.addEventListener("click", () => {
+      mezua.style.display = "none";
+
+      const primeroErr = document.querySelector(".fondo-erro");
+      if (primeroErr) primeroErr.focus();
+    });
+
+    window.addEventListener("beforeunload", (e) => {
+    });
+  });
+  </script>
+</body>
+</html>

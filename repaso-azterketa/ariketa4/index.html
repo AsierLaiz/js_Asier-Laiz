@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Personas por País</title>
+</head>
+<body>
+
+<h2>Personas de Denmark:</h2>
+<div id="denmark-list"></div>
+
+<h2>Cantidad de personas por país:</h2>
+<div id="country-count"></div>
+
+<script>
+const jsonUrl = 'pertsonak.json';  
+
+fetch(jsonUrl)
+  .then(response => {
+    if (!response.ok) throw new Error('Error al cargar el JSON');
+    return response.json();
+  })
+  .then(data => {
+    const denmarkListDiv = document.getElementById('denmark-list');
+    const denmarkNames = data.results
+      .filter(person => person.location.country === "Denmark")
+      .map(person => `${person.name.first} ${person.name.last}`);
+    
+    denmarkNames.forEach(name => {
+      const p = document.createElement('p');
+      p.textContent = name;
+      denmarkListDiv.appendChild(p);
+    });
+
+    const countryCountDiv = document.getElementById('country-count');
+    const counts = {};
+
+    data.results.forEach(person => {
+      const country = person.location.country;
+      counts[country] = (counts[country] || 0) + 1;
+    });
+
+    for (const [country, count] of Object.entries(counts)) {
+      const p = document.createElement('p');
+      p.textContent = `${country}: ${count}`;
+      countryCountDiv.appendChild(p);
+    }
+  })
+  .catch(error => console.error('Error:', error));
+</script>
+
+</body>
+</html>
